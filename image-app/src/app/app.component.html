@@ -1,0 +1,96 @@
+
+<div class="card" style="margin: 5rem;">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal" style="width: 10%; margin: 2rem;">
+    New Image
+  </button>
+
+  
+  <div style="display: flex; justify-content: space-around; margin: 2rem;">
+    <div class="card" *ngFor="let image of imageList">
+      <img [src]="image.url" class="card-img-top" alt="Selected Image" style="width: 200px; height: 20vh;">
+      <div class="card-body">
+        <h5>Create: {{ image.user }}</h5>
+        <h5>Create Date: {{ image.dateCreated | date }}</h5>
+        <h5>Description:</h5>
+        <p class="card-text">{{ image.description }}</p>
+        <div style="display: flex; flex-direction: row; justify-content: space-around;">
+          <button type="button" class="btn btn-primary" (click)="editImage(image)">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="deleteImage(image)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Modal for Image Upload -->
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="uploadModalLabel">Upload New Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="imageForm" (ngSubmit)="submitForm()">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="userName" class="form-label">User Name</label>
+            <input type="text" id="userName" formControlName="userName" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="createDate" class="form-label">Create Date</label>
+            <input type="date" id="createDate" formControlName="createDate" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="imageUrl" class="form-label">Image URL</label>
+            <input type="text" id="imageUrl" formControlName="imageUrl" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" formControlName="description" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal for Image Upload -->
+<!-- <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="uploadModalLabel">Upload New Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="imageForm" (ngSubmit)="submitForm()">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="userName" class="form-label">User Name</label>
+            <input type="text" id="userName" formControlName="userName" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="createDate" class="form-label">Create Date</label>
+            <input type="date" id="createDate" formControlName="createDate" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" id="image" (change)="onFileChange($event)" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" formControlName="description" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div> -->
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Image List</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User</th>
+          <th>Date Created</th>
+          <th>Description</th>
+          <th>URL</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let image of images">
+          <td>{{ image.id }}</td>
+          <td>{{ image.user }}</td>
+          <td>{{ image.dateCreated | date }}</td>
+          <td>{{ image.description }}</td>
+          <td><a [href]="image.url" target="_blank">{{ image.url }}</a></td>
+          <td>
+            <button (click)="editImage(image)" class="btn btn-primary">Edit</button>
+            <button (click)="deleteImage(image.id)" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="createImage()" class="btn btn-success">Add New Image</button>
+  </div>
+  

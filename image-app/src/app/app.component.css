@@ -1,0 +1,12 @@
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 2rem;
+  }
+  
+  .image-grid .card {
+    width: calc(50% - 20px); /* Adjust width based on your layout */
+    margin-bottom: 20px;
+  }
+  
